@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "usercode.h": "c",
+            "drv_hal_conf.h": "c"
+        }
+    },
+    "extensions": {}
+}
