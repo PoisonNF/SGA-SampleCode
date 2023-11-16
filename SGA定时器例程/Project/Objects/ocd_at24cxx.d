@@ -51,6 +51,7 @@
 .\objects\ocd_at24cxx.o: ..\Driver\Inc\drv_hal_dac.h
 .\objects\ocd_at24cxx.o: ..\Driver\Inc\drv_hal_wdg.h
 .\objects\ocd_at24cxx.o: ..\Driver\Inc\drv_hal_pwr.h
+.\objects\ocd_at24cxx.o: ..\Driver\Inc\drv_hal_flash.h
 .\objects\ocd_at24cxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\ocd_at24cxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\ocd_at24cxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

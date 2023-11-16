@@ -98,10 +98,13 @@
                 "path": "../Bsp/OCD/Src/ocd_ds3231.c"
               },
               {
+                "path": "../Bsp/OCD/Src/ocd_jy901.c"
+              },
+              {
                 "path": "../Bsp/OCD/Src/ocd_fatfs.c"
               },
               {
-                "path": "../Bsp/OCD/Src/ocd_jy901.c"
+                "path": "../Bsp/OCD/Src/ocd_ms5837.c"
               },
               {
                 "path": "../Bsp/OCD/Src/ocd_oled.c"
@@ -119,17 +122,7 @@
       },
       {
         "name": "Doc",
-        "files": [
-          {
-            "path": "../Doc/工程目录介绍.txt"
-          },
-          {
-            "path": "../Doc/工程维护记录.txt"
-          },
-          {
-            "path": "../Doc/句柄资源示例.txt"
-          }
-        ],
+        "files": [],
         "folders": []
       },
       {
@@ -143,6 +136,9 @@
           },
           {
             "path": "../Driver/Src/drv_hal_delay.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_flash.c"
           },
           {
             "path": "../Driver/Src/drv_hal_gpio.c"
@@ -181,16 +177,13 @@
         "name": "Hardware",
         "files": [
           {
-            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/arm/startup_stm32f103xe.s"
-          },
-          {
-            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c"
-          },
-          {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c"
@@ -205,10 +198,10 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_crc.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c"
@@ -220,16 +213,16 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
-          },
-          {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_hcd.c"
@@ -259,25 +252,25 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pccard.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
-          },
-          {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c"
@@ -292,10 +285,10 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sram.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
@@ -307,7 +300,10 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_wwdg.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
+            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/arm/startup_stm32f103xe.s"
           }
         ],
         "folders": []
@@ -318,7 +314,7 @@
   "deviceName": null,
   "packDir": null,
   "miscInfo": {
-    "uid": "5819d1a30c667b69d7af6852144c57e5"
+    "uid": "0cbf22b826db244b1fccf9596f844274"
   },
   "targets": {
     "Demo": {
@@ -443,7 +439,7 @@
         "baseAddr": "",
         "cpuInfo": {
           "vendor": "ST",
-          "cpuName": "STM32F103VE"
+          "cpuName": "STM32F103VC"
         },
         "proType": 1,
         "speed": 8000,

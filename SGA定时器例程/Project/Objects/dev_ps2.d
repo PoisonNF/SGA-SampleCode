@@ -51,6 +51,7 @@
 .\objects\dev_ps2.o: ..\Driver\Inc\drv_hal_dac.h
 .\objects\dev_ps2.o: ..\Driver\Inc\drv_hal_wdg.h
 .\objects\dev_ps2.o: ..\Driver\Inc\drv_hal_pwr.h
+.\objects\dev_ps2.o: ..\Driver\Inc\drv_hal_flash.h
 .\objects\dev_ps2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\dev_ps2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\dev_ps2.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

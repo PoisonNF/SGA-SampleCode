@@ -1,4 +1,5 @@
 .\objects\threadpool.o: ..\Apply\Logic\Src\threadpool.c
+.\objects\threadpool.o: ..\Apply\Logic\Inc\usercode.h
 .\objects\threadpool.o: ..\Apply\Logic\Inc\threadpool.h
 .\objects\threadpool.o: ..\Driver\Inc\drv_hal_conf.h
 .\objects\threadpool.o: ..\Driver\Inc\drv_hal.h
@@ -51,6 +52,7 @@
 .\objects\threadpool.o: ..\Driver\Inc\drv_hal_dac.h
 .\objects\threadpool.o: ..\Driver\Inc\drv_hal_wdg.h
 .\objects\threadpool.o: ..\Driver\Inc\drv_hal_pwr.h
+.\objects\threadpool.o: ..\Driver\Inc\drv_hal_flash.h
 .\objects\threadpool.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\threadpool.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\threadpool.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -50,6 +50,7 @@
 .\objects\drv_hal_delay.o: ..\Driver\Inc\drv_hal_dac.h
 .\objects\drv_hal_delay.o: ..\Driver\Inc\drv_hal_wdg.h
 .\objects\drv_hal_delay.o: ..\Driver\Inc\drv_hal_pwr.h
+.\objects\drv_hal_delay.o: ..\Driver\Inc\drv_hal_flash.h
 .\objects\drv_hal_delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\drv_hal_delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\drv_hal_delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

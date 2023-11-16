@@ -9,6 +9,8 @@
 * 文件历史：
 
 * 版本号	   日期		  作者		  说明
+*  2.6	 	2023-06-15	鲍程璐		新增GPIO状态翻转函数
+
 *  2.5	 	2023-05-29	鲍程璐		修复外部中断5-15无法使用的问题
 
 *  2.0	 	2023-03-03	鲍程璐		IO初始化中增加对外部中断的支持，减少嵌套
@@ -225,7 +227,6 @@ void Drv_GPIO_NVICConfig(tagGPIO_T *_tGPIO)
 {	
 	S_GPIO_NVICParamConfig(_tGPIO);
 }
-#endif
 
 /**
  * @brief GPIO初始化函数
@@ -269,3 +270,6 @@ void Drv_GPIO_EXTI_IRQHandler(tagGPIO_T *_tGPIO)
 {
 	HAL_GPIO_EXTI_IRQHandler(_tGPIO->tGPIOInit.Pin);
 }
+
+#endif
+

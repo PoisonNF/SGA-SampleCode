@@ -51,6 +51,7 @@
 .\objects\main.o: ..\Driver\Inc\drv_hal_dac.h
 .\objects\main.o: ..\Driver\Inc\drv_hal_wdg.h
 .\objects\main.o: ..\Driver\Inc\drv_hal_pwr.h
+.\objects\main.o: ..\Driver\Inc\drv_hal_flash.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

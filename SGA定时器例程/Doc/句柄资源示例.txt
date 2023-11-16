@@ -73,32 +73,32 @@ tagUART_T demoUart =
 /* GPIO句柄示例 */
 tagGPIO_T demoGPIO[3] =
 {
-	/* ADS1256电源使能 */
+	/* LED红灯 */
 	[0]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_6,				/* GPIO引脚 */
+		.tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIO引脚 */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
 		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
 		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 			= GPIOC,					/* GPIO分组 */
+		.tGPIOPort 			= GPIOD,					/* GPIO分组 */
 	},
-	/* 5V引脚使能 */
+	/* LED绿灯 */
 	[1]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_1,				/* GPIO引脚 */
+		.tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIO引脚 */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
 		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
 		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 			= GPIOB,					/* GPIO分组 */
+		.tGPIOPort 			= GPIOD,					/* GPIO分组 */
 	},
-	/* SD卡使能 */
+	/* LED蓝灯 */
 	[2]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_4,				/* GPIO引脚 */
+		.tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIO引脚 */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
 		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
 		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 			= GPIOC,					/* GPIO分组 */
+		.tGPIOPort 			= GPIOD,					/* GPIO分组 */
 	},
 };
 
@@ -167,13 +167,10 @@ tagIICSoft_T demoIIC =
 /* 定时器Timer资源结构体示例 */
 tagTIM_T tTimer = 
 {
-	.tTimerHandle.Instance				= TIM3,						/* 通用定时器3 */
-    .tTimerHandle.Init.Prescaler		= 72-1,						/* 分频系数，最大值65535 */
-    .tTimerHandle.Init.CounterMode		= TIM_COUNTERMODE_UP,		/* 向上计数器 */
-    .tTimerHandle.Init.Period			= 1000-1,					/* 自动装载值，最大值65535 */
-    .tTimerHandle.Init.ClockDivision	= TIM_CLOCKDIVISION_DIV1,	/* 时钟分频因子 */
-	
-	.ucPriority							= 3,						/* 中断优先级 */
+	.tTimerHandle.Instance				= TIM6,						/* 通用定时器6 */
+	.fTimingLength						= 100,						/* 定时时长(ms) */
+
+	.ucPriority							= 2,						/* 中断优先级 */
 	.ucSubPriority						= 2,						/* 中断子优先级 */
 };
 
@@ -355,7 +352,7 @@ tagDS3231_T tDS3231 =
 	.tIICSoft.tIICSoft[0].tGPIOPort 		= GPIOE,					/* GPIO分组 */
 	
 	/* SDA线 */
-	.tIICSoft.tIICSoft[1].tGPIOInit.Pin 	= GPIO_PIN_3,				/* GPIO引脚 */
+	.tIICSoft.tIICSoft[1].tGPIOInit.Pin 	= GPIO_PIN_4,				/* GPIO引脚 */
 	.tIICSoft.tIICSoft[1].tGPIOInit.Mode 	= GPIO_MODE_INPUT,			/* GPIO模式 */
 	.tIICSoft.tIICSoft[1].tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
 	.tIICSoft.tIICSoft[1].tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
@@ -476,29 +473,31 @@ tagPS2_T PS2 =
 tagJY901_T JY901S = 
 {
 	.tConfig.ucBaud 	= JY901_RXBAUD_9600,
-	.tConfig.ucRate		= JY901_RX_0_5HZ,
+	.tConfig.ucRate		= JY901_RX_1HZ,
 	.tConfig.usType		= JY901_OUTPUT_ACCEL | JY901_OUTPUT_GYRO | JY901_OUTPUT_ANGLE | JY901_OUTPUT_MAG,
+    .tConfig.ucOrient   = JY901_ORIENT_HORIZONTAL,
+    .tConfig.ucAxis     = JY901_AXIS_9,
 
-	.tUART.tUARTHandle.Instance 					= USART2,				/* STM32 串口设备 */
-	.tUART.tUARTHandle.Init.BaudRate   				= 9600,					/* 串口波特率 */
-	.tUART.tUARTHandle.Init.WordLength 				= UART_WORDLENGTH_8B,	
-	.tUART.tUARTHandle.Init.StopBits   				= UART_STOPBITS_1,
-	.tUART.tUARTHandle.Init.Parity     				= UART_PARITY_NONE,
-	.tUART.tUARTHandle.Init.HwFlowCtl  				= UART_HWCONTROL_NONE,
-	.tUART.tUARTHandle.Init.Mode       				= UART_MODE_TX_RX,
-	.tUART.tUARTHandle.Init.OverSampling 			= UART_OVERSAMPLING_16,
+	.tUART.tUARTHandle.Instance 				= USART2,			/* STM32 串口设备 */
+	.tUART.tUARTHandle.Init.BaudRate   			= 9600,				/* 串口波特率 */
+	.tUART.tUARTHandle.Init.WordLength 			= UART_WORDLENGTH_8B,
+	.tUART.tUARTHandle.Init.StopBits   			= UART_STOPBITS_1,
+	.tUART.tUARTHandle.Init.Parity     			= UART_PARITY_NONE,
+	.tUART.tUARTHandle.Init.HwFlowCtl  			= UART_HWCONTROL_NONE,
+	.tUART.tUARTHandle.Init.Mode       			= UART_MODE_TX_RX,
+	.tUART.tUARTHandle.Init.OverSampling 		= UART_OVERSAMPLING_16,
 
-	.tUART.tRxInfo.usDMARxMAXSize             		= 100,                	/* DMA接收缓冲区大小 大小保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tUART.tRxInfo.usDMARxMAXSize             	= 300,                 /* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 #if defined (STM32L4_SGA_ENABLE)
-	.tUARTHandle.Init.OneBitSampling 				= UART_ONE_BIT_SAMPLE_DISABLE,
-	.tUARTHandle.AdvancedInit.AdvFeatureInit 		= UART_ADVFEATURE_NO_INIT,
+	.tUARTHandle.Init.OneBitSampling 	= UART_ONE_BIT_SAMPLE_DISABLE,
+	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.tUART.ucPriority								= 1,						/* 中断优先级 */
-	.tUART.ucSubPriority							= 3,						/* 中断子优先级 */
+	.tUART.ucPriority							= 1,				/* 中断优先级 */
+	.tUART.ucSubPriority						= 3,				/* 中断子优先级 */
 	
-    .tUART.tUartDMA.bRxEnable						= true,						/* DMA接收使能 */
+    .tUART.tUartDMA.bRxEnable					= true,						/* DMA接收使能 */
 	.tUART.tUartDMA.tDMARx.Instance					= DMA1_Channel6,
 	.tUART.tUartDMA.tDMARx.Init.Direction			= DMA_PERIPH_TO_MEMORY,
 	.tUART.tUartDMA.tDMARx.Init.PeriphInc			= DMA_PINC_DISABLE,
@@ -508,23 +507,23 @@ tagJY901_T JY901S =
 	.tUART.tUartDMA.tDMARx.Init.Mode				= DMA_CIRCULAR,
 	.tUART.tUartDMA.tDMARx.Init.Priority			= DMA_PRIORITY_LOW,
 
-	.tUART.tUartDMA.ucDMARxPriority					= 1,				/* DMA中断优先级 */
-	.tUART.tUartDMA.ucDMARxSubPriority				= 1,				/* DMA中断子优先级 */
+	.tUART.tUartDMA.ucDMARxPriority				= 1,				/* DMA中断优先级 */
+	.tUART.tUartDMA.ucDMARxSubPriority			= 1,				/* DMA中断子优先级 */
 	
 	
-	.tUART.tGPIO[0].tGPIOInit.Pin 					= GPIO_PIN_2,				/* GPIO引脚 */
-	.tUART.tGPIO[0].tGPIOInit.Mode 					= GPIO_MODE_AF_PP,			/* GPIO模式 */
-	.tUART.tGPIO[0].tGPIOInit.Pull 					= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-	.tUART.tGPIO[0].tGPIOInit.Speed 				= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-	.tUART.tGPIO[0].tGPIOPort 						= GPIOA,					/* GPIO分组 */
-	.tUART.tGPIO[0].ucAFMode						= NO_REMAP,					/* GPIO重映射 */
+	.tUART.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIO引脚 */
+	.tUART.tGPIO[0].tGPIOInit.Mode 			= GPIO_MODE_AF_PP,			/* GPIO模式 */
+	.tUART.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tUART.tGPIO[0].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tUART.tGPIO[0].tGPIOPort 				= GPIOA,					/* GPIO分组 */
+	.tUART.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIO重映射 */
 	
-	.tUART.tGPIO[1].tGPIOInit.Pin 					= GPIO_PIN_3,				/* GPIO引脚 */
-	.tUART.tGPIO[1].tGPIOInit.Mode 					= GPIO_MODE_INPUT,			/* GPIO模式 */
-	.tUART.tGPIO[1].tGPIOInit.Pull 					= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-	.tUART.tGPIO[1].tGPIOInit.Speed 				= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-	.tUART.tGPIO[1].tGPIOPort 						= GPIOA,					/* GPIO分组 */
-	.tUART.tGPIO[1].ucAFMode						= NO_REMAP,					/* GPIO重映射 */
+	.tUART.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_3,				/* GPIO引脚 */
+	.tUART.tGPIO[1].tGPIOInit.Mode 			= GPIO_MODE_INPUT,			/* GPIO模式 */
+	.tUART.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tUART.tGPIO[1].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tUART.tGPIO[1].tGPIOPort 				= GPIOA,					/* GPIO分组 */
+	.tUART.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIO重映射 */
 };
 
 /* RM3100示例 */
@@ -616,6 +615,27 @@ tagRM3100_T RM3100[4] =
 		.tSoftSPI.tSPISoft[3].tGPIOPort			= GPIOE,
 		.tSoftSPI.tSPISoft[3].ucAFMode			= NO_REMAP,
 	},
+};
+
+/* MS5837示例 */
+tagMS5837_T MS5837 = 
+{
+    /* 采样分辨率设置 */
+	.setOSR = MS5837_OSR4096,
+
+	/* SCL线 */
+	.tIIC.tIICSoft[0].tGPIOInit.Pin 		= GPIO_PIN_4,				/* GPIO引脚 */
+	.tIIC.tIICSoft[0].tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tIIC.tIICSoft[0].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tIIC.tIICSoft[0].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tIIC.tIICSoft[0].tGPIOPort 			= GPIOC,					/* GPIO分组 */
+
+	/* SDA线 */
+	.tIIC.tIICSoft[1].tGPIOInit.Pin 		= GPIO_PIN_5,				/* GPIO引脚 */
+	.tIIC.tIICSoft[1].tGPIOInit.Mode		= GPIO_MODE_INPUT,			/* GPIO模式 */
+	.tIIC.tIICSoft[1].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tIIC.tIICSoft[1].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tIIC.tIICSoft[1].tGPIOPort 			= GPIOC,					/* GPIO分组 */
 };
 
 /* PID示例 */

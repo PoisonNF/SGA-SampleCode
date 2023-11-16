@@ -40,6 +40,11 @@ tagTIM_T tTimer2 =
 	.tTimerHandle.Init.RepetitionCounter = 0, //计数器溢出多少次后，中断一次，0：表示中断一次即溢出。
 	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//自动装载
 
+#if 0	//新版初始化方法，更加简单直观
+	.tTimerHandle.Instance				= TIM2,						/* 通用定时器2 */
+    .fTimingLength                      = 100,                      /* 延时100ms */
+#endif
+
 	.ucPriority = 0,
 	.ucSubPriority = 2,
 

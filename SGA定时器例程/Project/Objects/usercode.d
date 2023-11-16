@@ -51,6 +51,7 @@
 .\objects\usercode.o: ..\Driver\Inc\drv_hal_dac.h
 .\objects\usercode.o: ..\Driver\Inc\drv_hal_wdg.h
 .\objects\usercode.o: ..\Driver\Inc\drv_hal_pwr.h
+.\objects\usercode.o: ..\Driver\Inc\drv_hal_flash.h
 .\objects\usercode.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\usercode.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\usercode.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

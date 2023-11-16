@@ -78,7 +78,7 @@
 
 ## BSP/Dev层
 
-存放设备驱动，例如遥感和电机驱动
+存放设备驱动，例如手柄和电机驱动
 
 目前已有ps2手柄驱动：PS2
 
@@ -86,7 +86,7 @@
 
 存放第三方芯片的驱动代码
 
-目前已有的芯片驱动：ADS1256、AT24xx、DS3231、JY901、RM3100
+目前已有的芯片驱动：ADS1256、AT24xx、DS3231、JY901、RM3100、MS5837
 
 目前已有的外设驱动：OLED、SDcard
 
@@ -96,7 +96,7 @@
 
 ## Driver层
 
-- 目前驱动层已有adc、dac、gpio、iic_soft、pwm、pwr、spi_soft、spi、timer、uart、wdg相关驱动可以直接使用，不排除有隐藏BUG的可能
+- 目前驱动层已有adc、dac、flash、gpio、iic_soft、pwm、pwr、spi_soft、spi、timer、uart、wdg相关驱动可以直接使用，不排除有隐藏BUG的可能
 
 ## RTOS支持
 
