@@ -28,7 +28,7 @@ void UserLogic_Code(void)
         //接收到的数据个数不为0
 		if(num != 0)
 		{
-			printf("num = %d\r\n",num);
+			//printf("num = %d\r\n",num);
 			memcpy(SendBuffer,ReceBuffer,num);						//内存拷贝
             Drv_Uart_Transmit_DMA(&demoUart,SendBuffer,num);		//DMA发送
         

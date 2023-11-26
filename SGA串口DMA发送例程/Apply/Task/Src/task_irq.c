@@ -38,7 +38,7 @@ void USART1_IRQHandler(void)
 /* DMA1_Channel4中断处理函数 */
 void DMA1_Channel4_IRQHandler(void)
 {
-    HAL_DMA_IRQHandler(&demoUart.tUartDMA.tDMATx);      //HAL库公用DMA中断处理函数
+    Drv_Uart_DMA_IRQHandler(&demoUart);
 }
 
 /* 串口发送完成回调函数 */
