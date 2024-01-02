@@ -33,13 +33,16 @@ void USART1_IRQHandler(void)
     Drv_Uart_DMA_RxHandler(&demoUart);
 }
 
-/* *****************以下两个函数在使用DMA发送时必须写************************ */
+/* *****************以下函数在使用DMA发送时必须写************************ */
 
 /* DMA1_Channel4中断处理函数 */
 void DMA1_Channel4_IRQHandler(void)
 {
     Drv_Uart_DMA_IRQHandler(&demoUart);
 }
+/* *********************************************************************** */
+
+/* *****************以下函数在使用DMA发送时选择性写************************ */
 
 /* 串口发送完成回调函数 */
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
