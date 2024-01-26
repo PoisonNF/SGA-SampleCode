@@ -1,0 +1,13 @@
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\CMSIS_RTOS_V2\cmsis_os1.c
+.\objects\cmsis_os1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\CMSIS_RTOS_V2\cmsis_os.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\CMSIS_RTOS_V2\cmsis_os2.h
+.\objects\cmsis_os1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cmsis_os1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\include\FreeRTOS.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\include\FreeRTOSConfig.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\include\projdefs.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\include\portable.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\include\deprecated_definitions.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\portable\RVDS\ARM_CM3\portmacro.h
+.\objects\cmsis_os1.o: ..\Bsp\RTOS\FreeRTOS\include\mpu_wrappers.h
