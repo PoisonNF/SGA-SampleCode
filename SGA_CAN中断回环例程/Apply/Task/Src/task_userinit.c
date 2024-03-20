@@ -9,5 +9,5 @@ void Task_UserInit(void)
     
     Drv_Uart_ITInit(&demoUart);
 
-    Drv_CAN_Init(&CAN);
+    Drv_CAN_ITInit(&CAN);
 }
