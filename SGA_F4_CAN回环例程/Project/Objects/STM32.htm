@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\STM32.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM32.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jan 03 22:19:49 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed May 08 13:38:49 2024
 <BR><P>
 <H3>Maximum Stack Usage =        192 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -406,18 +406,18 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[67]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
 <P><STRONG><a name="[d9]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[66]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
 <P><STRONG><a name="[da]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
@@ -499,26 +499,26 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, drv_hal.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[75]"></a>Drv_CAN_Init</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, drv_hal_can.o(i.Drv_CAN_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Drv_CAN_Init &rArr; S_CAN_GPIOConfig &rArr; Drv_GPIO_Init &rArr; S_GPIO_NVICParamConfig &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
+<P><STRONG><a name="[75]"></a>Drv_CAN_Init</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, drv_hal_can.o(i.Drv_CAN_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Drv_CAN_Init &rArr; S_CAN_GPIOConfig &rArr; Drv_GPIO_Init &rArr; S_GPIO_NVICParamConfig &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_GPIOConfig
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_GPIOConfig
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_CLKEnable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_UserInit
 </UL>
 
-<P><STRONG><a name="[78]"></a>Drv_CAN_ReceMsg</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, drv_hal_can.o(i.Drv_CAN_ReceMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<P><STRONG><a name="[79]"></a>Drv_CAN_ReceMsg</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, drv_hal_can.o(i.Drv_CAN_ReceMsg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_GetRxMessage
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_GetRxFifoFillLevel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UserLogic_Code
 </UL>
 
-<P><STRONG><a name="[7b]"></a>Drv_CAN_SendMsg</STRONG> (Thumb, 58 bytes, Stack size 32 bytes, drv_hal_can.o(i.Drv_CAN_SendMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
+<P><STRONG><a name="[7b]"></a>Drv_CAN_SendMsg</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, drv_hal_can.o(i.Drv_CAN_SendMsg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_AddTxMessage
 </UL>
@@ -540,8 +540,8 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_GPIO_NVICParamConfig
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_GPIO_CLKEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_GPIOConfig
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_GPIOConfig
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_GPIOConfig
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_GPIOConfig
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_UserInit
 </UL>
 
@@ -550,9 +550,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_ParamConfig
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_ParamConfig
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_DMAParamConfig
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
 </UL>
 
 <P><STRONG><a name="[85]"></a>Drv_HAL_IncTick</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, drv_hal.o(i.Drv_HAL_IncTick))
@@ -576,7 +576,8 @@ Global Symbols
 <P><STRONG><a name="[8b]"></a>Drv_Uart_DMAInit</STRONG> (Thumb, 160 bytes, Stack size 8 bytes, drv_hal_uart.o(i.Drv_Uart_DMAInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Drv_Uart_DMAInit &rArr; S_Uart_ParamConfig &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_ParamMatch
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_DMA
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_ParamMatch
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_ParamConfig
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_NVICConfig
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_GPIOConfig
@@ -585,7 +586,6 @@ Global Symbols
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_DMAParamConfig
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_CLKEnable
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_CLKConfig
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_DMA
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_UserInit
@@ -608,7 +608,7 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>HAL_CAN_ActivateNotification</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_ActivateNotification))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = HAL_CAN_ActivateNotification
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
 </UL>
 
 <P><STRONG><a name="[7c]"></a>HAL_CAN_AddTxMessage</STRONG> (Thumb, 342 bytes, Stack size 20 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_AddTxMessage))
@@ -620,28 +620,22 @@ Global Symbols
 <P><STRONG><a name="[bc]"></a>HAL_CAN_ConfigFilter</STRONG> (Thumb, 286 bytes, Stack size 20 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_ConfigFilter))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = HAL_CAN_ConfigFilter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
-</UL>
-
-<P><STRONG><a name="[79]"></a>HAL_CAN_GetRxFifoFillLevel</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_GetRxFifoFillLevel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = HAL_CAN_GetRxFifoFillLevel
-</UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ReceMsg
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
 </UL>
 
 <P><STRONG><a name="[7a]"></a>HAL_CAN_GetRxMessage</STRONG> (Thumb, 378 bytes, Stack size 16 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_GetRxMessage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_CAN_GetRxMessage
 </UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ReceMsg
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ReceMsg
 </UL>
 
 <P><STRONG><a name="[99]"></a>HAL_CAN_Init</STRONG> (Thumb, 372 bytes, Stack size 16 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_CAN_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_MspInit
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_MspInit
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
 </UL>
 
 <P><STRONG><a name="[9a]"></a>HAL_CAN_MspInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_MspInit))
@@ -653,7 +647,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_ParamConfig
 </UL>
 
 <P><STRONG><a name="[9d]"></a>HAL_DMA_Abort</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, stm32f4xx_hal_dma.o(i.HAL_DMA_Abort))
@@ -706,8 +700,8 @@ Global Symbols
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Init
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 </UL>
 
 <P><STRONG><a name="[86]"></a>HAL_IncTick</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f4xx_hal.o(i.HAL_IncTick))
@@ -754,10 +748,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_GetPriorityGrouping
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_NVICConfig
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_MspInit
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_NVICConfig
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_DMA_NVICConfig
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_GPIO_NVICParamConfig
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_MspInit
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 </UL>
 
@@ -850,12 +844,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxEventCallback
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Transmit_IT
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxEventCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Uart_IRQHandler
 </UL>
@@ -863,8 +857,8 @@ Global Symbols
 <P><STRONG><a name="[b8]"></a>HAL_UART_Init</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_ParamConfig
 </UL>
@@ -916,7 +910,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[5c]"></a>SystemInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, system_stm32f4xx.o(i.SystemInit))
+<P><STRONG><a name="[5c]"></a>SystemInit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
 <P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, task_irq.o(i.TIM2_IRQHandler))
@@ -982,12 +976,12 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, drv_hal.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[c7]"></a>UserLogic_Code</STRONG> (Thumb, 84 bytes, Stack size 0 bytes, usercode.o(i.UserLogic_Code))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = UserLogic_Code &rArr; Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
+<P><STRONG><a name="[c7]"></a>UserLogic_Code</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, usercode.o(i.UserLogic_Code))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = UserLogic_Code &rArr; Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Delay_Ms
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_SendMsg
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ReceMsg
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ReceMsg
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1049,7 +1043,13 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Init
 </UL>
 
-<P><STRONG><a name="[76]"></a>S_CAN_GPIOConfig</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_GPIOConfig))
+<P><STRONG><a name="[76]"></a>S_CAN_CLKEnable</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_CLKEnable))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = S_CAN_CLKEnable
+</UL>
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_Init
+</UL>
+
+<P><STRONG><a name="[77]"></a>S_CAN_GPIOConfig</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_GPIOConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = S_CAN_GPIOConfig &rArr; Drv_GPIO_Init &rArr; S_GPIO_NVICParamConfig &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_GPIO_Init
@@ -1057,8 +1057,8 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_Init
 </UL>
 
-<P><STRONG><a name="[77]"></a>S_CAN_ParamConfig</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_ParamConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = S_CAN_ParamConfig &rArr; Drv_HAL_Error &rArr; __2printf
+<P><STRONG><a name="[78]"></a>S_CAN_ParamConfig</STRONG> (Thumb, 202 bytes, Stack size 16 bytes, drv_hal_can.o(i.S_CAN_ParamConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = S_CAN_ParamConfig &rArr; Drv_HAL_Error &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Start
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Init
@@ -1105,8 +1105,8 @@ Local Symbols
 <P><STRONG><a name="[90]"></a>S_Uart_DMAParamConfig</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, drv_hal_uart.o(i.S_Uart_DMAParamConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = S_Uart_DMAParamConfig &rArr; Drv_HAL_Error &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Init
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Init
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Uart_DMAInit
 </UL>
@@ -1146,8 +1146,8 @@ Local Symbols
 <P><STRONG><a name="[94]"></a>S_Uart_ParamConfig</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, drv_hal_uart.o(i.S_Uart_ParamConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = S_Uart_ParamConfig &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Uart_DMAInit
 </UL>
@@ -1191,9 +1191,9 @@ Local Symbols
 <P><STRONG><a name="[61]"></a>UART_DMAError</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, stm32f4xx_hal_uart.o(i.UART_DMAError))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = UART_DMAError
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTxTransfer
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTxTransfer
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_uart.o(i.UART_Start_Receive_DMA)
 </UL>
@@ -1255,21 +1255,21 @@ Local Symbols
 
 <P><STRONG><a name="[ca]"></a>_fp_digits</STRONG> (Thumb, 366 bytes, Stack size 64 bytes, printfa.o(i._fp_digits), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2ulz
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[c9]"></a>_printf_core</STRONG> (Thumb, 1744 bytes, Stack size 136 bytes, printfa.o(i._printf_core), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
+<BR><BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf
 </UL>

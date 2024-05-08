@@ -9,7 +9,15 @@
 * 文件历史：
 
 * 版本号	日期		作者		说明
-*    	2024-01-02	  鲍程璐	修改形参符合规范
+*  3.2  2024-05-08	  鲍程璐	优化发送和接收逻辑，可以设置多个过滤器并使用多个FIFO
+
+*  3.1  2024-03-20	  鲍程璐	增加CAN中断模式初始化函数
+
+*    	2024-02-28	  鲍程璐	增加CAN中断相关函数
+
+*  3.0 	2024-01-26	  鲍程璐	适配STM32F4系列
+
+        2024-01-02	  鲍程璐	修改形参符合规范
 
 *  2.9 	2023-12-27	  鲍程璐	创建该文件
 
@@ -72,10 +80,58 @@ static void S_CAN_GPIOConfig(tagCAN_T *_tCAN)
         _tCAN->tGPIO[0].tGPIOInit.Alternate = GPIO_AF9_CAN2;
         _tCAN->tGPIO[1].tGPIOInit.Alternate = GPIO_AF9_CAN2;
     }
-
 #endif
 
 	Drv_GPIO_Init(_tCAN->tGPIO, 2);
+}
+
+/**
+ * @brief CAN中断配置函数
+ * @param _tCAN-CAN结构体指针
+ * @retval Null 
+*/
+static void S_CAN_NVICConfig(tagCAN_T *_tCAN)
+{
+    if(_tCAN->tCANHandle.Instance == CAN1)
+    {
+        /* CAN1发送中断配置 */
+        HAL_NVIC_SetPriority(CAN1_TX_IRQn,_tCAN->ucTxPriority,_tCAN->ucTxSubPriority);
+        HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
+
+        /* CAN1接收0中断配置 */
+        HAL_NVIC_SetPriority(CAN1_RX0_IRQn,_tCAN->ucTxPriority,_tCAN->ucTxSubPriority);
+        HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
+
+        /* CAN1接收1中断配置 */
+        HAL_NVIC_SetPriority(CAN1_RX1_IRQn,_tCAN->ucTxPriority,_tCAN->ucTxSubPriority);
+        HAL_NVIC_EnableIRQ(CAN1_RX1_IRQn);
+
+        /* CAN1总线状态改变中断配置 */
+        HAL_NVIC_SetPriority(CAN1_SCE_IRQn,0,0);
+        HAL_NVIC_EnableIRQ(CAN1_SCE_IRQn);
+    }
+
+#ifdef STM32F4_SGA_ENABLE
+    else if(_tCAN->tCANHandle.Instance == CAN2)
+    {
+        /* CAN2发送中断配置 */
+        HAL_NVIC_SetPriority(CAN2_TX_IRQn,_tCAN->ucTxPriority,_tCAN->ucTxSubPriority);
+        HAL_NVIC_EnableIRQ(CAN2_TX_IRQn);
+
+        /* CAN2接收0中断配置 */
+        HAL_NVIC_SetPriority(CAN2_RX0_IRQn,_tCAN->ucTxPriority,_tCAN->ucTxSubPriority);
+        HAL_NVIC_EnableIRQ(CAN2_RX0_IRQn);
+
+        /* CAN2接收1中断配置 */
+        HAL_NVIC_SetPriority(CAN2_RX1_IRQn,_tCAN->ucTxPriority,_tCAN->ucTxSubPriority);
+        HAL_NVIC_EnableIRQ(CAN2_RX1_IRQn);
+
+        /* CAN2总线状态改变中断配置 */
+        HAL_NVIC_SetPriority(CAN2_SCE_IRQn,0,0);
+        HAL_NVIC_EnableIRQ(CAN2_SCE_IRQn);
+    }
+#endif
+
 }
 
 /**
@@ -90,15 +146,38 @@ static void S_CAN_ParamConfig(tagCAN_T *_tCAN)
         Drv_HAL_Error(__FILE__, __LINE__);
 
     /* CAN过滤器配置 */
-    if(HAL_CAN_ConfigFilter(&_tCAN->tCANHandle,&_tCAN->tCANFilter) != HAL_OK)
-        Drv_HAL_Error(__FILE__, __LINE__);
+    for(uint8_t index = 0; index < _tCAN->ucCANFilterNum; index++)
+    {
+        /* 配置过滤器 */
+        HAL_CAN_ConfigFilter(&_tCAN->tCANHandle,&_tCAN->tCANFilter[index]);
+
+        /* 根据选定的FIFO号开始对应的中断通知 */
+        if(_tCAN->tCANFilter[index].FilterFIFOAssignment == CAN_RX_FIFO0)
+        {
+            if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+                Drv_HAL_Error(__FILE__,__LINE__);
+            if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle, CAN_IT_RX_FIFO0_FULL) != HAL_OK)
+                Drv_HAL_Error(__FILE__,__LINE__);
+        }
+        else
+        {
+            if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle, CAN_IT_RX_FIFO1_MSG_PENDING) != HAL_OK)
+                Drv_HAL_Error(__FILE__,__LINE__);
+            if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle, CAN_IT_RX_FIFO1_FULL) != HAL_OK)
+                Drv_HAL_Error(__FILE__,__LINE__);
+        }
+    }
     
     /* 启动CAN外围设备 */
     if(HAL_CAN_Start(&_tCAN->tCANHandle) != HAL_OK)
         Drv_HAL_Error(__FILE__,__LINE__);
 
-    /* 激活RX通知 */
-    if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+    /* 激活CAN发送中断通知 */
+    if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle,CAN_IT_TX_MAILBOX_EMPTY) != HAL_OK)
+        Drv_HAL_Error(__FILE__,__LINE__);
+
+    /* 激活CAN错误中断通知 */
+    if(HAL_CAN_ActivateNotification(&_tCAN->tCANHandle, CAN_IT_ERROR) != HAL_OK)
         Drv_HAL_Error(__FILE__,__LINE__);
 }
 
@@ -145,19 +224,30 @@ void Drv_CAN_TxIDConfig(tagCAN_T *_tCAN,uint32_t _ulID)
 */
 uint8_t Drv_CAN_SendMsg(tagCAN_T *_tCAN,uint8_t *_ucpMsg,uint8_t _ucLen)
 {
-    uint8_t index = 0;
-    uint8_t ucTemp[8];
+    uint32_t ulTXMailBox = CAN_TX_MAILBOX0;
 
     _tCAN->tCANTxHeader.DLC = _ucLen;    /* 发送长度设置 */
-
-    /* 数据拷贝 */
-    for(index = 0;index < _ucLen;index ++)
+	
+	/* Check Tx Mailbox 0 status */
+    if((_tCAN->tCANHandle.Instance->TSR & CAN_TSR_TME0) != 0U)
     {
-        ucTemp[index] = _ucpMsg[index];
+        ulTXMailBox = CAN_TX_MAILBOX0;
     }
 
-    /* 将数据存储到发送邮箱中 */
-    if(HAL_CAN_AddTxMessage(&_tCAN->tCANHandle,&_tCAN->tCANTxHeader,ucTemp,(uint32_t *)CAN_TX_MAILBOX1))
+    /* Check Tx Mailbox 1 status */
+    else if((_tCAN->tCANHandle.Instance->TSR & CAN_TSR_TME1) != 0U)
+    {
+        ulTXMailBox = CAN_TX_MAILBOX1;
+    }
+
+    /* Check Tx Mailbox 2 status */
+    else if((_tCAN->tCANHandle.Instance->TSR & CAN_TSR_TME2) != 0U)
+    {
+        ulTXMailBox = CAN_TX_MAILBOX2;
+    }
+
+	/* 将数据存储到发送邮箱中 */
+    if(HAL_CAN_AddTxMessage(&_tCAN->tCANHandle,&_tCAN->tCANTxHeader,_ucpMsg,&ulTXMailBox))
     {
         return 1;
     }
@@ -169,26 +259,14 @@ uint8_t Drv_CAN_SendMsg(tagCAN_T *_tCAN,uint8_t *_ucpMsg,uint8_t _ucLen)
  * @brief CAN接收数据
  * @param _tCAN-CAN结构体指针
  * @param _ucpMsg-接收数据指针
+ * @param _ulRxFifo-接收数据的FIFO号，可选CAN_FILTER_FIFO0、CAN_FILTER_FIFO1
  * @retval uint8_t 接收数据长度
 */
-uint8_t Drv_CAN_ReceMsg(tagCAN_T *_tCAN,uint8_t *_ucpMsg)
+uint8_t Drv_CAN_ReceMsg(tagCAN_T *_tCAN,uint8_t *_ucpMsg,uint32_t _ulRxFifo)
 {
-    uint8_t index = 0;
-    uint8_t ucTemp[8];
-
-    if(HAL_CAN_GetRxFifoFillLevel(&_tCAN->tCANHandle,_tCAN->tCANFilter.FilterFIFOAssignment) != 1)
+    if(HAL_CAN_GetRxMessage(&_tCAN->tCANHandle,_ulRxFifo,&_tCAN->tCANRxHeader,_ucpMsg) != HAL_OK)
     {
-        return 0xf1;
-    }
-
-    if(HAL_CAN_GetRxMessage(&_tCAN->tCANHandle,_tCAN->tCANFilter.FilterFIFOAssignment,&_tCAN->tCANRxHeader,ucTemp) != HAL_OK)
-    {
-        return 0xf2;
-    }
-
-    for(index = 0;index < _tCAN->tCANRxHeader.DLC; index++)
-    {
-        _ucpMsg[index] = ucTemp[index];
+        return 0;
     }
 
     return _tCAN->tCANRxHeader.DLC;
@@ -204,6 +282,30 @@ void Drv_CAN_Init(tagCAN_T *_tCAN)
 	S_CAN_CLKEnable(_tCAN);
 	S_CAN_GPIOConfig(_tCAN);
 	S_CAN_ParamConfig(_tCAN);
+}
+
+/**
+ * @brief CAN中断模式初始化
+ * @param _tCAN-CAN结构体指针
+ * @retval Null
+*/
+void Drv_CAN_ITInit(tagCAN_T *_tCAN)
+{
+	S_CAN_CLKEnable(_tCAN);
+	S_CAN_GPIOConfig(_tCAN);
+    S_CAN_NVICConfig(_tCAN);
+	S_CAN_ParamConfig(_tCAN);
+}
+
+/**
+ * @brief CAN中断帽子函数(用于CAN中断处理函数中)
+ * @note 在类似void CAN1_TX_IRQHandler(void)函数中调用，根据实际情况进行更改
+ * @param _tCAN-CAN结构体指针
+ * @retval Null
+*/
+void Drv_CAN_IRQHandler(tagCAN_T *_tCAN)
+{
+	HAL_CAN_IRQHandler(&_tCAN->tCANHandle);
 }
 
 #endif

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\STM32.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM32.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Mar 20 12:53:09 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed May 08 13:30:53 2024
 <BR><P>
 <H3>Maximum Stack Usage =        192 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -491,7 +491,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[1e]"></a>CAN1_RX0_IRQHandler</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, task_irq.o(i.CAN1_RX0_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = CAN1_RX0_IRQHandler &rArr; Drv_CAN_IRQHandler &rArr; HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = CAN1_RX0_IRQHandler &rArr; Drv_CAN_IRQHandler &rArr; HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_IRQHandler
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -499,7 +499,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[1d]"></a>CAN1_TX_IRQHandler</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, task_irq.o(i.CAN1_TX_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = CAN1_TX_IRQHandler &rArr; Drv_CAN_IRQHandler &rArr; HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = CAN1_TX_IRQHandler &rArr; Drv_CAN_IRQHandler &rArr; HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_IRQHandler
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -510,7 +510,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[75]"></a>Drv_CAN_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, drv_hal_can.o(i.Drv_CAN_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Drv_CAN_IRQHandler &rArr; HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Drv_CAN_IRQHandler &rArr; HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_IRQHandler
 </UL>
@@ -529,16 +529,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_UserInit
 </UL>
 
-<P><STRONG><a name="[7d]"></a>Drv_CAN_ReceMsg</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, drv_hal_can.o(i.Drv_CAN_ReceMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<P><STRONG><a name="[7d]"></a>Drv_CAN_ReceMsg</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, drv_hal_can.o(i.Drv_CAN_ReceMsg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_GetRxMessage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_RxFifo0MsgPendingCallback
 </UL>
 
-<P><STRONG><a name="[7f]"></a>Drv_CAN_SendMsg</STRONG> (Thumb, 58 bytes, Stack size 32 bytes, drv_hal_can.o(i.Drv_CAN_SendMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
+<P><STRONG><a name="[7f]"></a>Drv_CAN_SendMsg</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, drv_hal_can.o(i.Drv_CAN_SendMsg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_AddTxMessage
 </UL>
@@ -560,9 +560,9 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_GPIO_NVICParamConfig
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_GPIO_CLKEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_GPIOConfig
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_UserInit
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_CAN_GPIOConfig
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_Uart_GPIOConfig
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_UserInit
 </UL>
 
 <P><STRONG><a name="[87]"></a>Drv_HAL_Error</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, drv_hal.o(i.Drv_HAL_Error))
@@ -654,7 +654,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[77]"></a>HAL_CAN_IRQHandler</STRONG> (Thumb, 590 bytes, Stack size 40 bytes, stm32f4xx_hal_can.o(i.HAL_CAN_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_CAN_IRQHandler &rArr; HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_TxMailbox0CompleteCallback
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_RxFifo0MsgPendingCallback
@@ -690,8 +690,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a3]"></a>HAL_CAN_RxFifo0MsgPendingCallback</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, task_irq.o(i.HAL_CAN_RxFifo0MsgPendingCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
+<P><STRONG><a name="[a3]"></a>HAL_CAN_RxFifo0MsgPendingCallback</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, task_irq.o(i.HAL_CAN_RxFifo0MsgPendingCallback))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_CAN_RxFifo0MsgPendingCallback &rArr; Drv_CAN_ReceMsg &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ReceMsg
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -865,9 +865,9 @@ Global Symbols
 <P><STRONG><a name="[ba]"></a>HAL_RCC_ClockConfig</STRONG> (Thumb, 368 bytes, Stack size 16 bytes, stm32f4xx_hal_rcc.o(i.HAL_RCC_ClockConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;S_HAL_CLKConfig
 </UL>
@@ -1080,7 +1080,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[d7]"></a>UserLogic_Code</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usercode.o(i.UserLogic_Code))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = UserLogic_Code &rArr; Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = UserLogic_Code &rArr; Drv_CAN_SendMsg &rArr; HAL_CAN_AddTxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Delay_Ms
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_SendMsg
@@ -1155,7 +1155,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ITInit
 </UL>
 
-<P><STRONG><a name="[7a]"></a>S_CAN_GPIOConfig</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_GPIOConfig))
+<P><STRONG><a name="[7a]"></a>S_CAN_GPIOConfig</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_GPIOConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = S_CAN_GPIOConfig &rArr; Drv_GPIO_Init &rArr; S_GPIO_NVICParamConfig &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_GPIO_Init
@@ -1163,7 +1163,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ITInit
 </UL>
 
-<P><STRONG><a name="[7b]"></a>S_CAN_NVICConfig</STRONG> (Thumb, 160 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_NVICConfig))
+<P><STRONG><a name="[7b]"></a>S_CAN_NVICConfig</STRONG> (Thumb, 168 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_NVICConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = S_CAN_NVICConfig &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
@@ -1172,14 +1172,14 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ITInit
 </UL>
 
-<P><STRONG><a name="[7c]"></a>S_CAN_ParamConfig</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, drv_hal_can.o(i.S_CAN_ParamConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = S_CAN_ParamConfig &rArr; Drv_HAL_Error &rArr; __2printf
+<P><STRONG><a name="[7c]"></a>S_CAN_ParamConfig</STRONG> (Thumb, 202 bytes, Stack size 16 bytes, drv_hal_can.o(i.S_CAN_ParamConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = S_CAN_ParamConfig &rArr; Drv_HAL_Error &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Start
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Start
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Init
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_ConfigFilter
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_ActivateNotification
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_CAN_ITInit
 </UL>
@@ -1220,8 +1220,8 @@ Local Symbols
 <P><STRONG><a name="[93]"></a>S_Uart_DMAParamConfig</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, drv_hal_uart.o(i.S_Uart_DMAParamConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = S_Uart_DMAParamConfig &rArr; Drv_HAL_Error &rArr; __2printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Init
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Uart_DMAInit
 </UL>
@@ -1261,8 +1261,8 @@ Local Symbols
 <P><STRONG><a name="[97]"></a>S_Uart_ParamConfig</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, drv_hal_uart.o(i.S_Uart_ParamConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = S_Uart_ParamConfig &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_HAL_Error
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Drv_Uart_DMAInit
 </UL>

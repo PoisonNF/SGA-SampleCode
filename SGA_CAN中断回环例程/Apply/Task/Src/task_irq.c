@@ -168,7 +168,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     if(hcan->Instance == CAN.tCANHandle.Instance)
     {
         /* CAN中断接收，并打印 */
-        num = Drv_CAN_ReceMsg(&CAN,ReceBuffer);
+        num = Drv_CAN_ReceMsg(&CAN,ReceBuffer,CAN_FILTER_FIFO0);
         if(num) printf("RX %s\r\n\r\n",ReceBuffer);
     }
 }

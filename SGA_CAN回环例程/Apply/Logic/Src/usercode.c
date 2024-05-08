@@ -37,7 +37,7 @@ void UserLogic_Code(void)
 		Drv_Delay_Ms(1000);
 
         //CAN接收数据
-		num = Drv_CAN_ReceMsg(&CAN,ReceBuffer);
+		num = Drv_CAN_ReceMsg(&CAN,ReceBuffer,CAN_FILTER_FIFO0);
 		if(num != 0)
 		{
 			printf("num = %d  ReceBuffer = %s\r\n",num,ReceBuffer);
