@@ -71,7 +71,7 @@ void USART1_IRQHandler(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	Drv_Uart_IT_RxHandler(&demoUart,'\n');
+	Drv_Uart_IT_RxHandler(&demoUart,'5');
 }
 
 /**

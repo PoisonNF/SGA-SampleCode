@@ -751,12 +751,13 @@ void Drv_Uart_IRQHandler(tagUART_T *_tUART)
 */
 void Drv_Uart_IT_RxHandler(tagUART_T *_tUART, uint8_t _ucEndChar)
 {
+    /* 存储1字节数据，同时接收计数器加一 */
+	_tUART->tRxInfo.ucpITRxCache[_tUART->tRxInfo.usRxCnt] = _tUART->tRxInfo.ucpRxBuffer[0];
+    _tUART->tRxInfo.usRxCnt++;
+    
 	/* 检测到结尾符ucEndChar代表接收结束 */
 	if(_tUART->tRxInfo.ucpRxBuffer[0] == _ucEndChar)
 	{
-		/* 替换为'\0'表示字符串结尾 */
-		_tUART->tRxInfo.ucpITRxCache[_tUART->tRxInfo.usRxCnt] = '\0';
-
 		/* 保存接收到的长度 */
 		_tUART->tRxInfo.usRxLength = _tUART->tRxInfo.usRxCnt;
 
@@ -767,27 +768,17 @@ void Drv_Uart_IT_RxHandler(tagUART_T *_tUART, uint8_t _ucEndChar)
 		_tUART->tRxInfo.ucRxCplt = 1;
 	}
 
-	/* 未到结尾继续接收 */
-	else
+	/* 当前接收长度超过上限值立即标记接收完成 */
+	else if(_tUART->tRxInfo.usRxCnt >= UART_IT_RX_CACHE_SIZE)
 	{
-		/* 未到接收数量上限继续接收 */
-		if(_tUART->tRxInfo.usRxCnt < UART_IT_RX_CACHE_SIZE)
-		{
-			/* 存储1字节数据，同时接收计数器加一 */
-			_tUART->tRxInfo.ucpITRxCache[_tUART->tRxInfo.usRxCnt] = _tUART->tRxInfo.ucpRxBuffer[0];
-			_tUART->tRxInfo.usRxCnt++;
-		}
-		else	/* 若超过cache大小立即告知接收完成，计数器归零接收多余字节 */
-		{
-			/* 保存接收到的长度 */
-			_tUART->tRxInfo.usRxLength = UART_IT_RX_CACHE_SIZE;
+		/* 保存接收到的长度 */
+		_tUART->tRxInfo.usRxLength = UART_IT_RX_CACHE_SIZE;
 
-			/* 接收计数器清零 */
-			_tUART->tRxInfo.usRxCnt = 0;
+		/* 接收计数器清零 */
+		_tUART->tRxInfo.usRxCnt = 0;
 
-			/* 接收完成标志位置1 */
-			_tUART->tRxInfo.ucRxCplt = 1;			
-		}
+		/* 接收完成标志位置1 */
+		_tUART->tRxInfo.ucRxCplt = 1;
 	}
 
 	/* 等待下一个字节接收完成 */

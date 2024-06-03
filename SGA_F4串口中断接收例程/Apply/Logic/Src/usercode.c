@@ -8,10 +8,12 @@
 
 /*
 	F4 串口中断接收实验，使用的是探索者开发板，使用串口1，完成XCOM发送什么，STM32返回什么，不超过100字节
+    （需要有特定结尾符，可在task_irq.c中的Drv_Uart_IT_RxHandler函数中调整第二个参数）
+    本例中检测以'5'为结尾的字符串
 */
 
-uint8_t num;
-uint8_t buffer[20];
+uint8_t buf[100];
+uint16_t ReciveNum;
 
 /* 用户逻辑代码 */
 void UserLogic_Code(void)
@@ -19,13 +21,12 @@ void UserLogic_Code(void)
 	printf("SGA_DEMO\r\n");
 	while(1)
 	{
-		memset(buffer,0,20);
-
-		num = Drv_Uart_Receive_IT(&demoUart,buffer);
-		if(num)
+        /* 将中断接收到的数据放入buf中，并且记录ReciveNum */
+		if((ReciveNum = Drv_Uart_Receive_IT(&demoUart,buf)) != 0)
 		{
-			printf("%s",buffer);
-			num = 0;
+			printf("接收到的长度为%d\r\n",ReciveNum);
+			printf("接收到的数据为%s",buf);
+			memset(buf,0,100);
 		}
 	}
 }

@@ -33,21 +33,9 @@ void USART1_IRQHandler(void)
     //Drv_Uart_DMA_RxHandler(&demoUart);
 }
 
-void DMA2_Stream2_IRQHandler(void)
-{
-  /* USER CODE BEGIN DMA2_Stream2_IRQn 0 */
-
-  /* USER CODE END DMA2_Stream2_IRQn 0 */
-  HAL_DMA_IRQHandler(&demoUart.tUartDMA.tDMARx);
-  /* USER CODE BEGIN DMA2_Stream2_IRQn 1 */
-
-  /* USER CODE END DMA2_Stream2_IRQn 1 */
-}
-
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    //printf("1");
-    Drv_Uart_IT_RxHandler(&demoUart,'\n');
+    Drv_Uart_IT_RxHandler(&demoUart,'5');
 }
 
 

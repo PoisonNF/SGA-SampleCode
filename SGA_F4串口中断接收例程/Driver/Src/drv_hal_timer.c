@@ -130,7 +130,7 @@ static void S_TIM_ParamMatch(tagTIM_T *_tTimer)
 
 	/* fTimingLength限幅 */
 	if(_tTimer->fTimingLength < 0)	_tTimer->fTimingLength = 0;
-	else if(_tTimer->fTimingLength > 59650.503125)	_tTimer->fTimingLength = 59650.503125;
+	else if(_tTimer->fTimingLength > 59650.503125f)	_tTimer->fTimingLength = 59650.503125f;
 
 	/* 根据fTimingLength匹配分频系数和重载值 */
 	if(_tTimer->fTimingLength > 52428)
@@ -143,7 +143,7 @@ static void S_TIM_ParamMatch(tagTIM_T *_tTimer)
 		_tTimer->tTimerHandle.Init.Prescaler = 57600-1;
 		_tTimer->tTimerHandle.Init.Period = (uint32_t)(_tTimer->fTimingLength*72000/(_tTimer->tTimerHandle.Init.Prescaler+1));
 	}
-	else if(_tTimer->fTimingLength > 6553.5)
+	else if(_tTimer->fTimingLength > 6553.5f)
 	{
 		_tTimer->tTimerHandle.Init.Prescaler = 28800-1;
 		_tTimer->tTimerHandle.Init.Period = (uint32_t)(_tTimer->fTimingLength*72000/(_tTimer->tTimerHandle.Init.Prescaler+1));
